@@ -203,6 +203,7 @@ function track(ev, p){ if (window.fbq) fbq('track', ev, p||{}); }
       <label for="f-name" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">السمية<input id="f-name" type="text" placeholder="الاسم الكامل" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
       <label for="f-phone" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">رقم الواتساب<input id="f-phone" type="tel" placeholder="06 00 00 00 00" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
       <label for="f-biz" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">شنو كتبيع؟<input id="f-biz" type="text" placeholder="مثلاً: ملابس، كوسميتيك…" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
+      <label for="f-link" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">لينك ديال الصفحة ولا الستور ديالك<input id="f-link" type="url" inputmode="url" dir="ltr" placeholder="instagram.com/... ولا mystore.com" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box; text-align: left"></label>
       <label for="f-budget" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">الميزانية الشهرية ديال الإعلانات<select id="f-budget" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option>أقل من 3000 درهم</option><option>3000 – 10000 درهم</option><option>أكثر من 10000 درهم</option></select></label>
       <button type="submit" style="font: inherit; font-weight: 700; font-size: 18px; background: #C8F25A; color: #0B1020; border: 0; border-radius: 12px; padding: 16px; min-height: 52px; cursor: pointer">صيفط الطلب</button>
     </form>
@@ -228,14 +229,14 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   e.preventDefault();
   var f=this, btn=f.querySelector('button[type=submit]');
   var n=document.getElementById('f-name').value.trim(), ph=document.getElementById('f-phone').value.trim(),
-      b=document.getElementById('f-biz').value.trim(), bu=document.getElementById('f-budget').value;
+      b=document.getElementById('f-biz').value.trim(), lk=document.getElementById('f-link').value.trim(), bu=document.getElementById('f-budget').value;
   if(!n||!ph){ alert('عمّر السمية ورقم الواتساب'); return; }
   btn.disabled=true; btn.textContent='كنصيفطو...';
   var src=new URLSearchParams(location.search).get('utm_source')||'direct';
   track('Lead',{content_name:'Formulaire', budget:bu});
-  var data=new URLSearchParams({name:n, phone:ph, biz:b, budget:bu, source:src});
+  var data=new URLSearchParams({name:n, phone:ph, biz:b, link:lk, budget:bu, source:src});
   var done=function(){
-    var msg='Salam Mustafa, bghit nkhdm m3ak f les ads.%0ASmiya: '+encodeURIComponent(n)+'%0AWhatsApp: '+encodeURIComponent(ph)+'%0AKanbi3: '+encodeURIComponent(b)+'%0ABudget: '+encodeURIComponent(bu);
+    var msg='Salam Mustafa, bghit nkhdm m3ak f les ads.%0ASmiya: '+encodeURIComponent(n)+'%0AWhatsApp: '+encodeURIComponent(ph)+'%0AKanbi3: '+encodeURIComponent(b)+'%0APage/Store: '+encodeURIComponent(lk)+'%0ABudget: '+encodeURIComponent(bu);
     f.innerHTML='<div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;padding:12px 0">'+
       '<svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#C8F25A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M7 12.5l3.2 3.2L17 9"></path></svg>'+
       '<div style="font-family:Cairo,sans-serif;font-weight:800;font-size:28px">شكراً '+n.replace(/[<>&"]/g,'')+'!</div>'+
