@@ -230,7 +230,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   if(!n||!ph){ alert('3mmer smiya w ra9m dyal WhatsApp'); return; }
   track('Lead',{content_name:'Formulaire', budget:bu});
   var msg='Salam Mustafa, bghit nkhdm m3ak f les ads.%0A'+'Smiya: '+encodeURIComponent(n)+'%0AWhatsApp: '+encodeURIComponent(ph)+'%0AKanbi3: '+encodeURIComponent(b)+'%0ABudget: '+encodeURIComponent(bu);
-  window.location.href='https://wa.me/212718121662?text='+msg;
+  setTimeout(function(){ window.location.href='https://wa.me/212718121662?text='+msg; }, 900);
 });
 </script>
 </body>
