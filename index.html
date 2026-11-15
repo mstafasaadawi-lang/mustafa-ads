@@ -221,7 +221,7 @@ document.querySelectorAll('a[href^="https://wa.me"]').forEach(function(a){
 var packs=document.getElementById('packs'), seen=false;
 if (packs && 'IntersectionObserver' in window) new IntersectionObserver(function(e){
   if(e[0].isIntersecting && !seen){ seen=true; track('ViewContent',{content_name:'Packs'}); }
-},{threshold:0.3}).observe(packs);
+},{threshold:0}).observe(packs);
 // Lead: formulaire -> WhatsApp
 document.getElementById('leadForm').addEventListener('submit', function(e){
   e.preventDefault();
