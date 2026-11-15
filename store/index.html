@@ -181,7 +181,7 @@ Object.keys(P).forEach(function(k){
     if(!f.n.value.trim()||!f.ph.value.trim()||!f.city.value||!f.ad.value.trim()){alert('عمّري جميع الخانات من فضلك');return;}
     var msg='طلب جديد — '+p.name+'\nاللون: '+p.colors[st.c][0]+'\nالمقاس: '+p.sizes[st.s]+'\nالكمية: '+st.q+'\nالمجموع: '+(p.price*st.q)+' درهم\n\nالاسم: '+f.n.value.trim()+'\nالهاتف: '+f.ph.value.trim()+'\nالمدينة: '+f.city.value+'\nالعنوان: '+f.ad.value.trim();
     var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
-    form.innerHTML='<div class="thanks"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#B65E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:auto"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><div class="h">شكراً '+esc(f.n.value.trim())+'!</div><div>توصلنا بالطلب ديالك، وغادي نتاصلو بيك باش نأكدو معاك قبل الإرسال.</div><a class="btn btn-rose" href="'+url+'">أكدي فالواتساب</a></div>';
+    form.innerHTML='<div class="thanks"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#B65E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:auto"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><div class="h">شكراً '+esc(f.n.value.trim())+'!</div><div>توصلنا بالطلب ديالك، وغادي نتواصلو معاك باش نأكدو معاك قبل الإرسال.</div><a class="btn btn-rose" href="'+url+'">أكدي فالواتساب</a></div>';
   });
   render();
 });
