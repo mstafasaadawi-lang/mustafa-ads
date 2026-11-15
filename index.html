@@ -222,15 +222,31 @@ var packs=document.getElementById('packs'), seen=false;
 if (packs && 'IntersectionObserver' in window) new IntersectionObserver(function(e){
   if(e[0].isIntersecting && !seen){ seen=true; track('ViewContent',{content_name:'Packs'}); }
 },{threshold:0}).observe(packs);
-// Lead: formulaire -> WhatsApp
+// Lead: formulaire -> Google Sheet + message dyal chokr
+var SHEET_URL = "";
 document.getElementById('leadForm').addEventListener('submit', function(e){
   e.preventDefault();
+  var f=this, btn=f.querySelector('button[type=submit]');
   var n=document.getElementById('f-name').value.trim(), ph=document.getElementById('f-phone').value.trim(),
       b=document.getElementById('f-biz').value.trim(), bu=document.getElementById('f-budget').value;
-  if(!n||!ph){ alert('3mmer smiya w ra9m dyal WhatsApp'); return; }
+  if(!n||!ph){ alert('عمّر السمية ورقم الواتساب'); return; }
+  btn.disabled=true; btn.textContent='كنصيفطو...';
+  var src=new URLSearchParams(location.search).get('utm_source')||'direct';
   track('Lead',{content_name:'Formulaire', budget:bu});
-  var msg='Salam Mustafa, bghit nkhdm m3ak f les ads.%0A'+'Smiya: '+encodeURIComponent(n)+'%0AWhatsApp: '+encodeURIComponent(ph)+'%0AKanbi3: '+encodeURIComponent(b)+'%0ABudget: '+encodeURIComponent(bu);
-  setTimeout(function(){ window.location.href='https://wa.me/212718121662?text='+msg; }, 900);
+  var data=new URLSearchParams({name:n, phone:ph, biz:b, budget:bu, source:src});
+  var done=function(){
+    var msg='Salam Mustafa, bghit nkhdm m3ak f les ads.%0ASmiya: '+encodeURIComponent(n)+'%0AWhatsApp: '+encodeURIComponent(ph)+'%0AKanbi3: '+encodeURIComponent(b)+'%0ABudget: '+encodeURIComponent(bu);
+    f.innerHTML='<div style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center;padding:12px 0">'+
+      '<svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#C8F25A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M7 12.5l3.2 3.2L17 9"></path></svg>'+
+      '<div style="font-family:Cairo,sans-serif;font-weight:800;font-size:28px">شكراً '+n.replace(/[<>&"]/g,'')+'!</div>'+
+      '<div style="color:#B7C0D3;font-size:18px">غادي نتواصلو معاك فأقرب وقت. دابا غادي يتحل ليك الواتساب، <b style="color:#F2F4F8">كليكي Envoyer</b> باش يوصلني الطلب ديالك.</div>'+
+      '<a href="https://wa.me/212718121662?text='+msg+'" style="margin-top:8px;text-decoration:none;background:#25D366;color:#06210F;font-weight:700;padding:14px 22px;border-radius:12px">إلا ما تحلّش الواتساب، كليكي هنا</a>'+
+      '</div>';
+    setTimeout(function(){ window.location.href='https://wa.me/212718121662?text='+msg; }, 1800);
+  };
+  if(SHEET_URL){
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',body:data}).then(done,done);
+  } else { done(); }
 });
 </script>
 </body>
