@@ -200,11 +200,11 @@ function track(ev, p){ if (window.fbq) fbq('track', ev, p||{}); }
       </div>
     </div>
     <form id="leadForm" style="flex: 1 1 380px; min-width: 0; background: #131A2E; border: 1px solid #222C45; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
-      <label for="f-name" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Nom<input id="f-name" type="text" placeholder="Nom complet" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
-      <label for="f-phone" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Numéro WhatsApp<input id="f-phone" type="tel" placeholder="06 00 00 00 00" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
-      <label for="f-biz" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Que vendez-vous ?<input id="f-biz" type="text" placeholder="Ex. : vêtements, cosmétiques…" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
-      <label for="f-link" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Lien de votre page ou boutique<input id="f-link" type="url" inputmode="url" dir="ltr" placeholder="instagram.com/... ou mystore.com" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box; "></label>
-      <label for="f-budget" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Budget publicitaire mensuel<select id="f-budget" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option>Moins de 3 000 DH</option><option>3 000 – 10 000 DH</option><option>Plus de 10 000 DH</option></select></label>
+      <label for="f-name" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Nom<input id="f-name" required type="text" placeholder="Nom complet" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
+      <label for="f-phone" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Numéro WhatsApp<input id="f-phone" required type="tel" placeholder="06 00 00 00 00" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
+      <label for="f-biz" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Que vendez-vous ?<input id="f-biz" required type="text" placeholder="Ex. : vêtements, cosmétiques…" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
+      <label for="f-link" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Lien de votre page ou boutique<input id="f-link" required type="url" inputmode="url" dir="ltr" placeholder="instagram.com/... ou mystore.com" style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box; "></label>
+      <label for="f-budget" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">Budget publicitaire mensuel<select id="f-budget" required style="font: inherit; background: #0B1020; color: #F2F4F8; border: 1px solid #3A4766; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option value="">Choisir le budget</option><option>Moins de 3 000 DH</option><option>3 000 – 10 000 DH</option><option>Plus de 10 000 DH</option></select></label>
       <button type="submit" style="font: inherit; font-weight: 700; font-size: 18px; background: #C8F25A; color: #0B1020; border: 0; border-radius: 12px; padding: 16px; min-height: 52px; cursor: pointer">Envoyer la demande</button>
     </form>
   </div>
@@ -230,7 +230,8 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   var f=this, btn=f.querySelector('button[type=submit]');
   var n=document.getElementById('f-name').value.trim(), ph=document.getElementById('f-phone').value.trim(),
       b=document.getElementById('f-biz').value.trim(), lk=document.getElementById('f-link').value.trim(), bu=document.getElementById('f-budget').value;
-  if(!n||!ph){ alert('Merci de remplir le nom et le numéro WhatsApp'); return; }
+  if(!n||!ph||!b||!lk||!bu){ alert('Merci de remplir tous les champs'); return; }
+  if(ph.replace(/\D/g,'').length<9){ alert('Numéro WhatsApp invalide'); return; }
   btn.disabled=true; btn.textContent='Envoi...';
   var src=new URLSearchParams(location.search).get('utm_source')||'direct';
   track('Lead',{content_name:'Formulaire', budget:bu});
