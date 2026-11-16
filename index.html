@@ -183,12 +183,12 @@ function track(ev, p){ if (window.fbq) fbq('track', ev, p||{}); }
       <h2 style="margin: 0; font-family: Cairo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.8vw, 46px)">يالاه نطلقو الحملة ديالك</h2>
       <p style="margin: 0; font-size: 19px; color: #B7C0D3">عطيني فكرة على المشروع ديالك، ونتواصل معاك فالواتساب باش نختارو مع بعض الباك اللي غادي يجيب ليك أحسن نتيجة. الاستشارة الأولى فابور.</p>
       </div>
-    <form id="leadForm" style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; color: #0B1020; border: 3px solid #C8F25A; box-shadow: 0 0 0 8px rgba(200,242,90,.18), 0 24px 60px rgba(0,0,0,.45); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px"><div style="font-family: Cairo, sans-serif; font-weight: 800; font-size: 24px; text-align: center">عمّر المعلومات ديالك 👇</div><div style="text-align:center;color:#4A5568;margin-top:-8px">كتاخد أقل من دقيقة</div><div id="packNote" hidden style="background:#0B1020;border:1px solid #C8F25A;color:#C8F25A;border-radius:10px;padding:10px 14px;font-weight:700">الباك اللي اخترتي: <span id="packName" dir="ltr"></span></div>
+    <form id="leadForm" style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; color: #0B1020; border: 3px solid #C8F25A; box-shadow: 0 0 0 8px rgba(200,242,90,.18), 0 24px 60px rgba(0,0,0,.45); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px"><div style="font-family: Cairo, sans-serif; font-weight: 800; font-size: 24px; text-align: center">عمّر المعلومات ديالك 👇</div><div style="text-align:center;color:#4A5568;margin-top:-8px">كتاخد أقل من دقيقة</div>
       <label for="f-name" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">السمية<input id="f-name" required type="text" placeholder="الاسم الكامل" style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
       <label for="f-phone" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">رقم الواتساب<input id="f-phone" required type="tel" placeholder="06 00 00 00 00" style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
       <label for="f-biz" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">شنو كتبيع؟<input id="f-biz" required type="text" placeholder="مثلاً: ملابس، كوسميتيك…" style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box"></label>
       <label for="f-link" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">لينك ديال الصفحة ولا الستور ديالك<input id="f-link" required type="url" inputmode="url" dir="ltr" placeholder="instagram.com/... ولا mystore.com" style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px; box-sizing: border-box; text-align: left"></label>
-      <label for="f-budget" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">الميزانية الشهرية ديال الإعلانات<select id="f-budget" required style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option value="">اختار الميزانية</option><option>أقل من 3000 درهم</option><option>3000 – 10000 درهم</option><option>أكثر من 10000 درهم</option></select></label>
+      <label for="f-pack" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">الباك اللي بغيتي<select id="f-pack" required style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option value="">اختار الباك</option><option value="Meta Pack 10 Jours">Meta · 10 jours — 700 DH</option><option value="Meta Pack 1 Mois">Meta · 1 mois — 1500 DH</option><option value="TikTok Pack 10 Jours">TikTok · 10 jours — 1000 DH</option><option value="TikTok Pack 1 Mois">TikTok · 1 mois — 2500 DH</option><option value="ما عارفش، بغيت استشارة">ما عارفش، بغيت استشارة</option></select></label><label for="f-budget" style="display: flex; flex-direction: column; gap: 6px; font-weight: 600">الميزانية الشهرية ديال الإعلانات<select id="f-budget" required style="font: inherit; background: #F4F6FA; color: #0B1020; border: 1px solid #C9D1DE; border-radius: 10px; padding: 12px 14px; min-height: 48px"><option value="">اختار الميزانية</option><option>أقل من 3000 درهم</option><option>3000 – 10000 درهم</option><option>أكثر من 10000 درهم</option></select></label>
       <button type="submit" style="font: inherit; font-weight: 700; font-size: 18px; background: #0B1020; color: #C8F25A; border: 0; border-radius: 12px; padding: 16px; min-height: 52px; cursor: pointer">صيفط الطلب</button>
     </form>
   </div>
@@ -212,8 +212,8 @@ if (packs && 'IntersectionObserver' in window) new IntersectionObserver(function
 var chosenPack='';
 document.querySelectorAll('a[data-pack]').forEach(function(a){
   a.addEventListener('click',function(){
-    chosenPack=a.dataset.pack; document.getElementById('packName').textContent=chosenPack;
-    document.getElementById('packNote').hidden=false; track('AddToCart',{content_name:chosenPack});
+    chosenPack=a.dataset.pack; document.getElementById('f-pack').value=chosenPack;
+    track('AddToCart',{content_name:chosenPack});
     setTimeout(function(){document.getElementById('f-name').focus({preventScroll:true})},600);
   });
 });
@@ -223,8 +223,8 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   e.preventDefault();
   var f=this, btn=f.querySelector('button[type=submit]');
   var n=document.getElementById('f-name').value.trim(), ph=document.getElementById('f-phone').value.trim(),
-      b=document.getElementById('f-biz').value.trim(), lk=document.getElementById('f-link').value.trim(), bu=document.getElementById('f-budget').value;
-  if(!n||!ph||!b||!lk||!bu){ alert('عافاك عمّر جميع الخانات'); return; }
+      b=document.getElementById('f-biz').value.trim(), lk=document.getElementById('f-link').value.trim(), bu=document.getElementById('f-budget').value; chosenPack=document.getElementById('f-pack').value;
+  if(!n||!ph||!b||!lk||!bu||!chosenPack){ alert('عافاك عمّر جميع الخانات'); return; }
   if(ph.replace(/\D/g,'').length<9){ alert('رقم الواتساب ماشي صحيح'); return; }
   btn.disabled=true; btn.textContent='كنصيفطو...';
   var src=new URLSearchParams(location.search).get('utm_source')||'direct';
